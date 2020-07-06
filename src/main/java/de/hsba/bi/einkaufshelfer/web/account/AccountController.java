@@ -16,13 +16,6 @@ public class AccountController {
         return "account/login";
     }
 
-    @GetMapping("forgot-password")
-    public String forgotPassword(Model model) {
-        model.addAttribute("pageTitle", "Passwort vergessen?!");
-        model.addAttribute("pageDescription", "Wir schicken dir ein Link zum Zurücksetzen.");
-        return "account/forgot-password";
-    }
-
     @GetMapping("register")
     public String register(Model model) {
         model.addAttribute("pageTitle", "Registrieren");
