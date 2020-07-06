@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html layout:decorate="~{layout}"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+<div th:replace="fragments/header :: .hx-header-container"></div>
+<div class="hx-content-container hx-inner">
+    <div class="hx-container" layout:fragment="content">
+        <div th:replace="fragments/title :: hxtitle('Seite nicht gefunden', 'Diese Seite existiert nicht mehr oder wurde verschoben.') "></div>
+    </div>
+</div>
+</body>
+</html>

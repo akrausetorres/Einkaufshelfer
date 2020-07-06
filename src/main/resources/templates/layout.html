@@ -11,12 +11,9 @@
     <link th:href="@{/styles/app.css}" rel="stylesheet" />
 </head>
 <body>
-
 <div th:replace="fragments/header :: .hx-header-container"></div>
-
 <div class="hx-content-container hx-inner">
     <div th:replace="fragments/title :: hxtitle(${pageTitle}, ${pageDescription}) "></div>
-
     <div class="container" layout:fragment="content"></div>
 </div>
 </body>
