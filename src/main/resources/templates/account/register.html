@@ -2,6 +2,7 @@
 <html lang="en"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
@@ -15,10 +16,7 @@
 <div th:replace="fragments/header :: .hx-header-container"></div>
 
 <div class="hx-content-container hx-inner">
-    <div th:if="${pageTitle != null || pageDescription != null}" class="hx-title">
-        <h1 th:text="${pageTitle}"></h1>
-        <p th:text="${pageDescription}"></p>
-    </div>
+    <div th:replace="fragments/title :: hxtitle(${pageTitle}, ${pageDescription}) "></div>
 
     <div class="container" layout:fragment="content">
         <p>Formular...</p>
