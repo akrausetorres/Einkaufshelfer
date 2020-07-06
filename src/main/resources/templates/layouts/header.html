@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+<body>
+<th:block layout:fragment="headerFragment">
+    <div class="hx-header-container">
+        <div class="hx-inner">
+            <h1>Einkaufshelfer</h1>
+            <ul>
+                <li>
+                    <a href="/account/login">Login</a>
+                </li>
+                <li>
+                    <a href="/account/register">Registrieren</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

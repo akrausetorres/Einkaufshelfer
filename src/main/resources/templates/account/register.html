@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Dein Einkaufshelfer</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link th:href="@{/styles/app.css}" rel="stylesheet" />
 </head>
 <body>
+<div class="hx-content-container hx-inner">
+    <div th:if="${pageTitle != null || pageDescription != null}" class="hx-title">
+        <h1 th:text="${pageTitle}"></h1>
+        <p th:text="${pageDescription}"></p>
+    </div>
 
+    <div class="container" layout:fragment="content">
+        <p>Formular...</p>
+
+        <a href="/account/login">Bereits ein Konto?</a>
+    </div>
+</div>
 </body>
 </html>

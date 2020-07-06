@@ -11,16 +11,16 @@
     <link th:href="@{/styles/app.css}" rel="stylesheet" />
 </head>
 <body>
+
+<!-- <div th:replace="layouts/header.html::headerFragment"></div> -->
+
 <div class="hx-content-container hx-inner">
     <div th:if="${pageTitle != null || pageDescription != null}" class="hx-title">
         <h1 th:text="${pageTitle}"></h1>
         <p th:text="${pageDescription}"></p>
     </div>
 
-    <div class="container" layout:fragment="content">
-        <p>Formular</p>
-        <a href="/account/login">Zurück zum Login?</a>
-    </div>
+    <div class="container" layout:fragment="content"></div>
 </div>
 </body>
 </html>

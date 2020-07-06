@@ -8,9 +8,35 @@ body p {
   font-weight: 400;
   color: #6a6a6a;
 }
-body .hx-content-container {
+body .hx-inner {
   max-width: 1100px;
-  margin: 50px auto;
+  margin: auto;
+}
+body .hx-header-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #dedede;
+  padding: 20px 0;
+}
+body .hx-header-container h1 {
+  font-size: 20px;
+  float: left;
+  margin: 0;
+}
+body .hx-header-container ul {
+  list-style-type: none;
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+body .hx-header-container ul li {
+  display: inline-block;
+  padding: 0 5px;
+}
+body .hx-content-container {
+  margin: 100px auto 50px auto;
 }
 body .hx-content-container .hx-title h1 {
   text-align: left;
