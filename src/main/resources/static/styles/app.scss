@@ -25,10 +25,16 @@ body {
     border-bottom: 1px solid #dedede;
     padding: 20px 0;
 
-    h1 {
+    a.hx-logo {
       font-size: 20px;
       float: left;
       margin: 0;
+      color: #000000;
+
+      &:hover {
+        text-decoration: none;
+        color: cadetblue;
+      }
     }
 
     ul {

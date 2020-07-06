@@ -20,10 +20,15 @@ body .hx-header-container {
   border-bottom: 1px solid #dedede;
   padding: 20px 0;
 }
-body .hx-header-container h1 {
+body .hx-header-container a.hx-logo {
   font-size: 20px;
   float: left;
   margin: 0;
+  color: #000000;
+}
+body .hx-header-container a.hx-logo:hover {
+  text-decoration: none;
+  color: cadetblue;
 }
 body .hx-header-container ul {
   list-style-type: none;
