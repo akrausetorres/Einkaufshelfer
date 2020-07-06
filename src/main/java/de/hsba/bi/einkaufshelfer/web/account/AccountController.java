@@ -13,6 +13,8 @@ public class AccountController {
     public String login(Model model) {
         model.addAttribute("pageTitle", "Login");
         model.addAttribute("pageDescription", "Anmelden & Konto verwalten");
+
+        //TODO: Secure Login
         return "account/login";
     }
 
