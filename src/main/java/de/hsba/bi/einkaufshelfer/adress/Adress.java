@@ -54,6 +54,16 @@ public class Adress {
     @Basic
     @Getter
     @Setter
-    private Long additional_info;
+    private String additional_info;
+
+    public Adress(String street, String house_number, String postalcode, String district, String bell_name, int floor_number, String additional_info){
+        this.street = street;
+        this.house_number = house_number;
+        this.postalcode = postalcode;
+        this.district = district;
+        this.bell_name = bell_name;
+        this.floor_number = floor_number;
+        this.additional_info = additional_info;
+    }
 
 }
