@@ -12,12 +12,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/account")
 public class AccountController {
 
-    @GetMapping("/login")
+    @GetMapping("login")
     public String login(Model model) {
         model.addAttribute("pageTitle", "Login");
         model.addAttribute("pageDescription", "Anmelden & Konto verwalten");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         return auth instanceof AnonymousAuthenticationToken ? "account/login" : "redirect:/account/settings";
+    }
+
+    @GetMapping("logout")
+    public String logout() {
+        SecurityContextHolder.clearContext();
+        return "redirect:/account/login";
     }
 
     @GetMapping("register")

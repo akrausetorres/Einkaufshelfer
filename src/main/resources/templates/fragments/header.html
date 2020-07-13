@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
 <div class="hx-header-container">
     <div class="hx-inner">
         <a href="/" class="hx-logo">Einkaufshelfer</a>
+
         <ul>
-            <li>
+            <li sec:authorize="anonymous">
                 <a href="/account/login">Login</a>
             </li>
-            <li>
+            <li sec:authorize="anonymous">
                 <a href="/account/register">Registrieren</a>
+            </li>
+
+            <li sec:authorize="authenticated">
+                <a href="/account/settings"><span th:text="${#httpServletRequest.remoteUser}" /></a>
             </li>
         </ul>
     </div>

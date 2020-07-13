@@ -1,6 +1,9 @@
 package de.hsba.bi.einkaufshelfer.user;
 
 import java.util.List;
+
+import org.springframework.boot.context.event.ApplicationStartedEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +19,11 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public void init() {}
+    @EventListener(ApplicationStartedEvent.class)
+    public void init() {
+        createUser("helper", "Start123", User.HELPER_ROLE);
+        createUser("needy", "Pwd123", User.NEEDY_ROLE);
+    }
 
     private void createUser(String name, String password, String role) {
         userRepository.save(new User(name, passwordEncoder.encode(password), role));
