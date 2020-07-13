@@ -27,6 +27,14 @@
     </div>
 
     <div class="hx-container" layout:fragment="content">
+        <div class="mb-4" th:if="${param.error}">
+            <strong class="text-danger">Login fehlgeschlagen</strong>
+        </div>
+
+        <div class="mb-4" th:if="${param.logout}">
+            <strong>Sie haben sich erfolgreich abgemeldet</strong>
+        </div>
+
         <form method="post" th:action="@{/login}">
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label" for="inputUsername">Nutzername</label>

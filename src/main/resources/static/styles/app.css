@@ -19,6 +19,7 @@ body .hx-header-container {
   width: 100%;
   border-bottom: 1px solid #dedede;
   padding: 20px 0;
+  background-color: #fff;
 }
 body .hx-header-container a.hx-logo {
   font-size: 20px;
