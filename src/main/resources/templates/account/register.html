@@ -20,7 +20,7 @@
 
     <div class="hx-container" layout:fragment="content">
 
-        <div class="hx-alert-container" th:if="${registerError != null}">
+        <div class="hx-alert-container error" th:if="${registerError != null}">
             <strong th:text="${registerError}"></strong>
         </div>
 
@@ -49,6 +49,13 @@
                     <input th:field="*{password}" class="form-control" id="inputPassword" name="password" type="password" />
                 </div>
                 <label class="text-danger small" th:errors="*{password}"/>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputPasswordConfirm">Passwort wiederholen</label>
+                <div class="col-sm-10">
+                    <input th:field="*{passwordConfirm}" class="form-control" id="inputPasswordConfirm" name="password" type="password" />
+                </div>
+                <label class="text-danger small" th:errors="*{passwordConfirm}"/>
             </div>
             <div class="form-group row">
                 <div class="col-sm-offset-2 col-sm-10">

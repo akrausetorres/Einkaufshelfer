@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 
+//This Class is required for the security!
+
 @Service
 @Transactional
 @RequiredArgsConstructor

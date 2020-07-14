@@ -40,6 +40,11 @@ public class RegisterFormController {
             return "account/register";
         }
 
+        if(form.getPassword() != form.getPasswordConfirm()) {
+            model.addAttribute("registerError", "Die beiden Passwörter stimmen nicht überein. Bitte erneut versuchen.");
+            return "account/register";
+        }
+
         userService.createUser(username, password, role);
 
         return "redirect:/account/login";

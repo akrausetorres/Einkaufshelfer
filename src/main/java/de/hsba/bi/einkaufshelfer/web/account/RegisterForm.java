@@ -23,4 +23,7 @@ public class RegisterForm {
 
     @NotEmpty(message = "Bitte Passwort eingeben")
     private String password;
+
+    @NotEmpty(message = "Bitte Passwort wiederholen eingeben")
+    private String passwordConfirm;
 }

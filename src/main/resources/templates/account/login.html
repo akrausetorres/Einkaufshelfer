@@ -20,12 +20,8 @@
 
 
     <div class="hx-container" layout:fragment="content">
-        <div class="hx-alert-container" th:if="${param.error}">
-            <strong class="text-danger">Login fehlgeschlagen</strong>
-        </div>
-
-        <div class="hx-alert-container" th:if="${param.logout}">
-            <strong>Sie haben sich erfolgreich abgemeldet</strong>
+        <div class="hx-alert-container error" th:if="${param.error}">
+            <strong>Login fehlgeschlagen. Der Nutzer existiert nicht oder das Passwort ist falsch.</strong>
         </div>
 
         <form method="post" th:action="@{/account/login}">

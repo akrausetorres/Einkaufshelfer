@@ -1,5 +1,7 @@
 package de.hsba.bi.einkaufshelfer.web;
 
+import de.hsba.bi.einkaufshelfer.user.User;
+import de.hsba.bi.einkaufshelfer.user.UserService;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -12,8 +14,12 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("pageTitle", "Hey!");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        String greetingString = auth instanceof AnonymousAuthenticationToken ? "!" : " " + SecurityContextHolder.getContext().getAuthentication().getName() + "!";
+
+        model.addAttribute("pageTitle", "Hey" + greetingString);
         model.addAttribute("pageDescription", "Hier ensteht dein neuer Einkaufshelfer!");
-        return "layout";
+        return "homepage";
     }
 }

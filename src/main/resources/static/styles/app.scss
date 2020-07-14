@@ -17,6 +17,27 @@ body {
     margin: auto;
   }
 
+  .hx-alert-container {
+    margin: 15px 0 40px;
+    background: #f2f2f2;
+    padding: 15px;
+    border: 1px solid #dedede;
+
+    &.error {
+      background: #ffd9d9;
+      border: 1px solid #ff5959;
+    }
+
+    &.success {
+      background: #e0ffd9;
+      border: 1px solid #afff8e;
+    }
+
+    strong {
+      font-weight: 500;
+    }
+  }
+
   .hx-header-container {
     position: fixed;
     top: 0;
