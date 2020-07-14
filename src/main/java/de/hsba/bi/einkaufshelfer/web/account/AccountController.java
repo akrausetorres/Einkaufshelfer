@@ -30,6 +30,7 @@ public class AccountController {
     public String register(Model model) {
         model.addAttribute("pageTitle", "Registrieren");
         model.addAttribute("pageDescription", "Erstelle ein neues Konto");
+        model.addAttribute("registerForm", new RegisterForm());
         return "account/register";
     }
 

@@ -25,7 +25,7 @@ public class UserService {
         createUser("needy", "Pwd123", User.NEEDY_ROLE);
     }
 
-    private void createUser(String name, String password, String role) {
+    public void createUser(String name, String password, String role) {
         userRepository.save(new User(name, passwordEncoder.encode(password), role));
     }
 
@@ -39,6 +39,10 @@ public class UserService {
 
     public List<User> findNeeders() {
         return userRepository.findByRole(User.NEEDY_ROLE);
+    }
+
+    public User findUser(String username) {
+        return userRepository.findByName(username);
     }
 
     public User findCurrentUser() {
