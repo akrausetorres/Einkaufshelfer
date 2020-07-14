@@ -31,6 +31,7 @@ public class RegisterFormController {
 
         String username = form.getUsername();
         String password = form.getPassword();
+        String passwordConfirm = form.getPasswordConfirm();
         String role = form.getRole();
 
         User usercheck = userService.findUser(username);
@@ -40,13 +41,12 @@ public class RegisterFormController {
             return "account/register";
         }
 
-        if(form.getPassword() != form.getPasswordConfirm()) {
+        if (!password.equals(passwordConfirm)) {
             model.addAttribute("registerError", "Die beiden Passwörter stimmen nicht überein. Bitte erneut versuchen.");
             return "account/register";
         }
 
         userService.createUser(username, password, role);
-
         return "redirect:/account/login";
     }
 }
