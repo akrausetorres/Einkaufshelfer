@@ -2,8 +2,6 @@ package de.hsba.bi.einkaufshelfer.web.account;
 
 
 import de.hsba.bi.einkaufshelfer.user.User;
-import de.hsba.bi.einkaufshelfer.user.UserAdapter;
-import de.hsba.bi.einkaufshelfer.user.UserAdapterService;
 import de.hsba.bi.einkaufshelfer.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,7 +23,6 @@ import javax.validation.Valid;
 public class EditUserController {
 
     private final UserService userService;
-    private final UserAdapterService userAdapterService;
 
     @PostMapping
     public String editUser(
