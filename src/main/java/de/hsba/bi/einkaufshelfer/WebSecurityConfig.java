@@ -16,6 +16,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //TODO: Add Security Configs!!!
+        // secure account/setting
         http.formLogin()
                 .loginPage("/account/login")
                 .and()

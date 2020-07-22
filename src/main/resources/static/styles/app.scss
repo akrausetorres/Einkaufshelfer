@@ -1,6 +1,8 @@
 // HSBA Einkaufshelfer
 // © 2020
 
+// Generally we use hx- as our prefix for classes
+
 body {
   font-family: "Avenir Next", "Helvetica Neue", sans-serif;
   font-weight: 500;
@@ -15,6 +17,14 @@ body {
   .hx-inner {
     max-width: 1100px;
     margin: auto;
+    width: 95%;
+  }
+
+  h2.hx-section-title {
+    border-bottom: 1px solid #dedede;
+    padding-bottom: 10px;
+    margin: 50px 0 20px;
+    font-size: 18px;
   }
 
   .hx-alert-container {

@@ -29,6 +29,10 @@ public class UserService {
         userRepository.save(new User(name, passwordEncoder.encode(password), role));
     }
 
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
+
     public List<User> findAll() {
         return userRepository.findAll();
     }
