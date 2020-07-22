@@ -63,6 +63,16 @@ body .hx-header-container {
   padding: 20px 0;
   background-color: #fff;
 }
+body .hx-header-container .hx-search-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 350px;
+}
+body .hx-header-container .hx-search-container input {
+  width: 100%;
+}
 body .hx-header-container a.hx-logo {
   font-size: 20px;
   float: left;

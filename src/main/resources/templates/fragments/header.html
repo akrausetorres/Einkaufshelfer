@@ -6,6 +6,10 @@
     <div class="hx-inner">
         <a href="/" class="hx-logo">Einkaufshelfer</a>
 
+        <div class="hx-search-container">
+            <input placeholder="Suche..." class="form-control" id="inputUsername" name="username" type="text" />
+        </div>
+
         <ul>
             <li sec:authorize="anonymous">
                 <a href="/account/login">Login</a>
