@@ -38,7 +38,9 @@ public class User implements Comparable<User> {
     public User(String name, String password, String role) {
         this.name = name;
         this.password = password;
-        this.role = role;
+
+        //make sure role is not manipulated, in case we give BOOTH
+        this.role = role == HELPER_ROLE ? HELPER_ROLE : role == NEEDY_ROLE ? NEEDY_ROLE : role == BOOTH_ROLE ? BOOTH_ROLE : BOOTH_ROLE;
     }
 
     public static String getCurrentUsername() {
