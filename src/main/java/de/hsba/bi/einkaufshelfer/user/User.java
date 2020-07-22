@@ -18,9 +18,9 @@ import javax.persistence.Id;
 @NoArgsConstructor
 public class User implements Comparable<User> {
 
-    public static String HELPER_ROLE = "HELPER";
-    public static String NEEDY_ROLE = "NEEDY";
-    public static String BOOTH_ROLE = "BOOTH";
+    public static final String HELPER_ROLE = "HELPER";
+    public static final String NEEDY_ROLE = "NEEDY";
+    public static final String BOOTH_ROLE = "BOOTH";
 
     @Id
     @GeneratedValue
@@ -41,6 +41,17 @@ public class User implements Comparable<User> {
 
         //make sure role is not manipulated, in case we give BOOTH
         this.role = role == HELPER_ROLE ? HELPER_ROLE : role == NEEDY_ROLE ? NEEDY_ROLE : role == BOOTH_ROLE ? BOOTH_ROLE : BOOTH_ROLE;
+    }
+
+    public String getTranslatedRole() {
+        switch (this.role) {
+            case HELPER_ROLE:
+                return "Helfer";
+            case NEEDY_ROLE:
+                return "Hilfbedürftiger";
+            default:
+                return "Helfer & Hilfsbedürftiger";
+        }
     }
 
     public static String getCurrentUsername() {

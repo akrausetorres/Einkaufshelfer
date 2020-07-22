@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserAdapterService userAdapterService;
 
     @EventListener(ApplicationStartedEvent.class)
     public void init() {
@@ -26,7 +29,7 @@ public class UserService {
     }
 
     public void createUser(String name, String password, String role) {
-        userRepository.save(new User(name, passwordEncoder.encode(password), role));
+        userRepository.save(new User(name.toLowerCase(), passwordEncoder.encode(password), role));
     }
 
     public void saveUser(User user) {
@@ -46,7 +49,7 @@ public class UserService {
     }
 
     public User findUser(String username) {
-        return userRepository.findByName(username);
+        return userRepository.findByName(username.toLowerCase());
     }
 
     public User findCurrentUser() {

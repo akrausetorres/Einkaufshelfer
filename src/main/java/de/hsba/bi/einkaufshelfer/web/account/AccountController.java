@@ -47,6 +47,10 @@ public class AccountController {
 
         User user = userService.findCurrentUser();
 
+        if (user == null) {
+            return "redirect:/login";
+        }
+
         EditUserForm form = new EditUserForm();
         form.setRole(user.getRole());
         form.setUsername(user.getName());

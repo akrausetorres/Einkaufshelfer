@@ -19,6 +19,24 @@ body h2.hx-section-title {
   margin: 50px 0 20px;
   font-size: 18px;
 }
+body .hx-user-profile {
+  margin-bottom: 25px;
+}
+body .hx-role-tag {
+  background-color: #3d3d3d;
+  padding: 2px 15px;
+  border-radius: 45px;
+  color: #fff;
+  margin: 0px 0 10px;
+  display: inline-block;
+  font-size: 14px;
+}
+body .hx-ratings {
+  font-size: 15px;
+}
+body .hx-ratings .gray {
+  color: #6a6a6a;
+}
 body .hx-alert-container {
   margin: 15px 0 30px;
   background: #f2f2f2;

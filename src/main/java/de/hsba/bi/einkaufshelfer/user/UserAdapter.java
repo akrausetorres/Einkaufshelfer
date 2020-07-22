@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 //This Class is required for the security!
 
 @RequiredArgsConstructor
-class UserAdapter implements UserDetails {
+public class UserAdapter implements UserDetails {
 
     private final User user;
 

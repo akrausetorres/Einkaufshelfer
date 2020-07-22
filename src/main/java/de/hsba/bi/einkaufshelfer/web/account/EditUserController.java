@@ -2,8 +2,14 @@ package de.hsba.bi.einkaufshelfer.web.account;
 
 
 import de.hsba.bi.einkaufshelfer.user.User;
+import de.hsba.bi.einkaufshelfer.user.UserAdapter;
+import de.hsba.bi.einkaufshelfer.user.UserAdapterService;
 import de.hsba.bi.einkaufshelfer.user.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -19,6 +25,7 @@ import javax.validation.Valid;
 public class EditUserController {
 
     private final UserService userService;
+    private final UserAdapterService userAdapterService;
 
     @PostMapping
     public String editUser(
@@ -32,17 +39,27 @@ public class EditUserController {
             return "account/settings";
         }
 
+        User user = userService.findCurrentUser();
+
         //make sure role is not manipulated, in case we give BOOTH
         String role = form.getRole() == User.HELPER_ROLE ? User.HELPER_ROLE : form.getRole() == User.NEEDY_ROLE ? User.NEEDY_ROLE : form.getRole() == User.BOOTH_ROLE ? User.BOOTH_ROLE : User.BOOTH_ROLE;
-        String username = form.getUsername();
+        String username = form.getUsername().toLowerCase();
+        Boolean changedUsername = !username.equals(user.getName());
 
-        User user = userService.findCurrentUser();
+        if(changedUsername) {
+            // Logout because token is changed
+            // UX can be make better by updating the token in background
+            SecurityContextHolder.clearContext();
+            model.addAttribute("pageTitle", "Login");
+            model.addAttribute("pageDescription", "Anmelden & Konto verwalten");
+        }
 
         user.setRole(role);
         user.setName(username);
+
         userService.saveUser(user);
 
-        model.addAttribute("editUserSuccess", "Die Änderungen wurden gespeichert.");
-        return "/account/settings";
+        model.addAttribute("editUserSuccess", changedUsername ? "Nutzername wurde geändert. Bitte erneut einloggen." : "Die Änderungen wurden gespeichert.");
+        return changedUsername ? "/account/login" : "/account/settings";
     }
 }

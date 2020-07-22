@@ -24,6 +24,10 @@
             <strong>Login fehlgeschlagen. Der Nutzer existiert nicht oder das Passwort ist falsch.</strong>
         </div>
 
+        <div class="hx-alert-container success" th:if="${editUserSuccess != null}">
+            <strong th:text="${editUserSuccess}"></strong>
+        </div>
+
         <form method="post" th:action="@{/account/login}">
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label" for="inputUsername">Nutzername</label>
