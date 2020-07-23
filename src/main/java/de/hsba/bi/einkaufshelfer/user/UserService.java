@@ -33,9 +33,9 @@ public class UserService {
         User user2 = createUser("needy", "Pwd123", User.NEEDY_ROLE);
         User user3 = createUser("johndoe", "Pwd123", User.NEEDY_ROLE);
 
-        ratingService.saveRating(new Rating(user1, user2, 4));
-        ratingService.saveRating(new Rating(user2, user2, 5));
-        ratingService.saveRating(new Rating(user3, user2, 1));
+        ratingService.saveRating(new Rating(user1, user1, 4));
+        ratingService.saveRating(new Rating(user2, user1, 5));
+        ratingService.saveRating(new Rating(user3, user1, 1));
     }
 
     public User createUser(String name, String password, String role) {
