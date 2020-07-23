@@ -23,8 +23,8 @@
         <div class="hx-user-profile">
             <h2 th:text="${user.name}"></h2>
             <span th:text="${user.getTranslatedRole()}" class="hx-role-tag"></span>
-            <div class="hx-ratings" th:if="${rating} != null">
-                <span th:text="${rating}"></span> <span class="gray">von 5 Sterne</span>
+            <div class="hx-ratings" th:if="${user.calculateRating()} != null">
+                <span th:text="${user.calculateRating()}"></span> <span class="gray">von 5 Sterne</span>
             </div>
         </div>
 

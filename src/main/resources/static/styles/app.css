@@ -106,13 +106,11 @@ body .clearfix::after {
   display: block;
   clear: both;
 }
-body .hx-users-grid-container {
-  width: 8%;
-  display: inline-block;
-}
 body .hx-users-grid-container .bx-user-item {
   margin: 1%;
   text-align: center;
+  width: 8%;
+  float: left;
 }
 body .hx-users-grid-container .bx-user-item:hover {
   text-decoration: none;

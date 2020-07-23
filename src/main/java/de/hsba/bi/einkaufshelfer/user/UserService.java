@@ -1,5 +1,7 @@
 package de.hsba.bi.einkaufshelfer.user;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import de.hsba.bi.einkaufshelfer.rating.Rating;
@@ -22,11 +24,18 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final RatingService ratingService;
 
     @EventListener(ApplicationStartedEvent.class)
     public void init() {
-        createUser("helper", "Start123", User.HELPER_ROLE);
-        createUser("needy", "Pwd123", User.NEEDY_ROLE);
+        //Create Demo Data
+        User user1 = createUser("helper", "Start123", User.HELPER_ROLE);
+        User user2 = createUser("needy", "Pwd123", User.NEEDY_ROLE);
+        User user3 = createUser("johndoe", "Pwd123", User.NEEDY_ROLE);
+
+        ratingService.saveRating(new Rating(user1, user2, 4));
+        ratingService.saveRating(new Rating(user2, user2, 5));
+        ratingService.saveRating(new Rating(user3, user2, 1));
     }
 
     public User createUser(String name, String password, String role) {
@@ -55,5 +64,10 @@ public class UserService {
 
     public User findCurrentUser() {
         return userRepository.findByName(User.getCurrentUsername());
+    }
+
+    public Rating submitRating(Integer stars, User toUser) {
+        User currentUser = findCurrentUser();
+        return ratingService.saveRating( new Rating(currentUser, toUser, stars) );
     }
 }

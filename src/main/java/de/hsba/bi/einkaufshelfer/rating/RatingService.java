@@ -16,13 +16,6 @@ import java.util.List;
 public class RatingService {
 
     private final RatingRepository repository;
-    private final UserService userService;
-
-    public Rating submitRating(Integer stars, User toUser) {
-        User currentUser = userService.findCurrentUser();
-        //TODO: Check if the users are partners -> one helps the other
-        return repository.save( new Rating(currentUser, toUser, stars) );
-    }
 
     public Rating getRating(User fromUser, User toUser) {
         return repository.findByFromUserAndToUser(fromUser, toUser);
@@ -32,19 +25,7 @@ public class RatingService {
         repository.delete(rating);
     }
 
-    public Rating updateRating(Rating rating) {
+    public Rating saveRating(Rating rating) {
         return repository.save(rating);
-    }
-
-    public BigDecimal calculateUserRating(User user) {
-        List<Rating> ratings = repository.findByToUser(user);
-
-        int sumRatings = 0;
-
-        for (Rating rating : ratings) {
-            sumRatings += rating.getStars();
-        }
-
-        return ratings.size() > 0 ? new BigDecimal(sumRatings).divide(new BigDecimal(ratings.size()), 1, RoundingMode.HALF_EVEN) : null;
     }
 }

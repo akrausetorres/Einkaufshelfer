@@ -137,12 +137,12 @@ body {
   }
 
   .hx-users-grid-container {
-    width: 8%;
-    display: inline-block;
 
     .bx-user-item {
       margin: 1%;
       text-align: center;
+      width: 8%;
+      float: left;
 
       &:hover {
         text-decoration: none;

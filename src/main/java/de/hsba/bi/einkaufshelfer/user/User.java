@@ -1,5 +1,6 @@
 package de.hsba.bi.einkaufshelfer.user;
 
+import de.hsba.bi.einkaufshelfer.rating.Rating;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,10 +8,10 @@ import lombok.Setter;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.List;
 
 @Entity
 @Getter
@@ -33,6 +34,10 @@ public class User implements Comparable<User> {
     @Basic(optional = false)
     private String password;
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "toUser")
+    @OrderBy
+    private List<Rating> ratings;
+
     private String role;
 
     public User(String name, String password, String role) {
@@ -52,6 +57,17 @@ public class User implements Comparable<User> {
             default:
                 return "Helfer & Hilfsbedürftiger";
         }
+    }
+
+    public BigDecimal calculateRating() {
+        List<Rating> ratings = this.ratings;
+        int sumRatings = 0;
+
+        for (Rating rating : ratings) {
+            sumRatings += rating.getStars();
+        }
+
+        return ratings.size() > 0 ? new BigDecimal(sumRatings).divide(new BigDecimal(ratings.size()), 1, RoundingMode.HALF_EVEN) : null;
     }
 
     public static String getCurrentUsername() {
