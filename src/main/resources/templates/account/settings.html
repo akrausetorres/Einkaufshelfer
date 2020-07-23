@@ -39,15 +39,15 @@
                         <option th:selected="(*{role} == 'NEEDY')" value="NEEDY">Hilfe anfragen</option>
                         <option th:selected="(*{role} == 'BOOTH')" value="BOOTH">Beides</option>
                     </select>
+                    <label class="text-danger small" th:errors="*{role}"/>
                 </div>
-                <label class="text-danger small" th:errors="*{role}"/>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label" for="inputUsername">Nutzername</label>
                 <div class="col-sm-10">
                     <input th:field="*{username}" class="form-control" id="inputUsername" name="username" type="text" />
+                    <label class="text-danger small" th:errors="*{username}"/>
                 </div>
-                <label class="text-danger small" th:errors="*{username}"/>
             </div>
             <div class="form-group row">
                 <div class="col-sm-offset-2 col-sm-10">

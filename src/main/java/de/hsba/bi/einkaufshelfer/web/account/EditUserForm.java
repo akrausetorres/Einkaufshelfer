@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class EditUserForm {
 
-    @NotNull(message = "Bitte einen Nutzernamen eingeben")
+    @NotEmpty(message = "Bitte einen Nutzernamen eingeben")
     private String username;
 
     @NotEmpty(message = "Bitte eine Rolle eingeben")
