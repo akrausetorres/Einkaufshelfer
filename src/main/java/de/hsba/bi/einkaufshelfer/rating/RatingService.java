@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 @Service
@@ -44,6 +45,6 @@ public class RatingService {
             sumRatings += rating.getStars();
         }
 
-        return new BigDecimal(sumRatings / ratings.size());
+        return ratings.size() > 0 ? new BigDecimal(sumRatings).divide(new BigDecimal(ratings.size()), 1, RoundingMode.HALF_EVEN) : null;
     }
 }

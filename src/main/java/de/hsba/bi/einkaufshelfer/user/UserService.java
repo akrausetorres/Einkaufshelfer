@@ -2,6 +2,8 @@ package de.hsba.bi.einkaufshelfer.user;
 
 import java.util.List;
 
+import de.hsba.bi.einkaufshelfer.rating.Rating;
+import de.hsba.bi.einkaufshelfer.rating.RatingService;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.security.core.Authentication;
@@ -20,7 +22,6 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final UserAdapterService userAdapterService;
 
     @EventListener(ApplicationStartedEvent.class)
     public void init() {
@@ -28,12 +29,12 @@ public class UserService {
         createUser("needy", "Pwd123", User.NEEDY_ROLE);
     }
 
-    public void createUser(String name, String password, String role) {
-        userRepository.save(new User(name.toLowerCase(), passwordEncoder.encode(password), role));
+    public User createUser(String name, String password, String role) {
+        return userRepository.save(new User(name.toLowerCase(), passwordEncoder.encode(password), role));
     }
 
-    public void saveUser(User user) {
-        userRepository.save(user);
+    public User saveUser(User user) {
+        return userRepository.save(user);
     }
 
     public List<User> findAll() {
