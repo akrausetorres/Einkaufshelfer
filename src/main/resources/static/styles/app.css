@@ -101,5 +101,45 @@ body .hx-content-container .hx-title h1 {
   font-weight: 600;
   font-size: 20px;
 }
+body .clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+body .hx-users-grid-container {
+  width: 8%;
+  display: inline-block;
+}
+body .hx-users-grid-container .bx-user-item {
+  margin: 1%;
+  text-align: center;
+}
+body .hx-users-grid-container .bx-user-item:hover {
+  text-decoration: none;
+}
+body .hx-users-grid-container .bx-user-item .bx-inital {
+  width: 100%;
+  padding-bottom: 100%;
+  border-radius: 50%;
+  background-color: #333;
+  position: relative;
+}
+body .hx-users-grid-container .bx-user-item .bx-inital span {
+  color: #fff;
+  font-weight: 500;
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  left: 0;
+  text-transform: uppercase;
+  transform: translateY(-50%);
+}
+body .hx-users-grid-container .bx-user-item .bx-username {
+  margin-top: 5px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #333;
+}
 
 /*# sourceMappingURL=app.css.map */

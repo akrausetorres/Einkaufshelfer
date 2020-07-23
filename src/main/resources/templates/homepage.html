@@ -23,8 +23,13 @@
         <strong>If Helper: Show List of Anfragen and offer your help</strong> <br />
         <strong>If Needy: Show List of Helprequests and choose one offer</strong> <br />
         <strong>If Booth: Show booth lists</strong><br />
-        <strong>List Users: all Helpers & Booth</strong><br />
-        <strong>List Users: all Needys & Booth</strong>
+
+        <h2 class="hx-section-title">Unsere Helfer</h2>
+        <div th:replace="fragments/user-list :: hxuserlist(${helpers}) "></div>
+
+        <h2 class="hx-section-title">Unsere Hilfsbedürftigen</h2>
+        <div th:replace="fragments/user-list :: hxuserlist(${needers}) "></div>
+
     </div>
 </div>
 </body>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+<body>
+
+<div th:fragment="hxuserlist (users)" th:if="${users != null}" class="hx-users-grid-container clearfix">
+    <a th:href="${'/users/' + user.name}" class="bx-user-item" th:each="user : ${users}">
+        <div class="bx-inital"><span th:text="${user.name.charAt(0)}"></span></div>
+        <div th:text="${user.name}" class="bx-username"></div>
+    </a>
+</div>
+
+</body>
+</html>
