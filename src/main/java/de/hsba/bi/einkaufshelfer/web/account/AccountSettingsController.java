@@ -52,14 +52,12 @@ public class AccountSettingsController {
         User user = userService.findCurrentUser();
         EditAddressForm addressForm = new EditAddressForm();
         if(user == null) {return addressForm;}
-        if (user.getRole().equals("NEEDY") || user.getRole().equals("BOOTH")) {
-            if (!user.getAddress().getStreet().isEmpty()) {
-                addressForm.setStreet(user.getAddress().getStreet());
-                addressForm.setStreetNr(user.getAddress().getStreetNr());
-                addressForm.setPostalcode(user.getAddress().getPostalcode());
-                addressForm.setCity(user.getAddress().getCity());
-                addressForm.setCountry(user.getAddress().getCountry());
-            }
+        if (user.getAddress() != null) {
+            addressForm.setStreet(user.getAddress().getStreet());
+            addressForm.setStreetNr(user.getAddress().getStreetNr());
+            addressForm.setPostalcode(user.getAddress().getPostalcode());
+            addressForm.setCity(user.getAddress().getCity());
+            addressForm.setCountry(user.getAddress().getCountry());
         }
         return addressForm;
     }
