@@ -2,6 +2,7 @@ package de.hsba.bi.einkaufshelfer.user;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
 import java.util.List;
 
 import de.hsba.bi.einkaufshelfer.address.Address;
@@ -16,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
+import org.thymeleaf.util.ListUtils;
 
 import javax.transaction.Transactional;
 
@@ -34,7 +36,7 @@ public class UserService {
         //Create Demo Data
         User user1 = createUser("helper", "Start123", User.HELPER_ROLE);
         User user2 = createUser("needy", "Pwd123", User.NEEDY_ROLE);
-        User user3 = createUser("johndoe", "Pwd123", User.NEEDY_ROLE);
+        User user3 = createUser("john", "Pwd123", User.BOOTH_ROLE);
 
         ratingService.saveRating(new Rating(user1, user1, 4));
         ratingService.saveRating(new Rating(user2, user1, 5));
@@ -56,11 +58,17 @@ public class UserService {
     }
 
     public List<User> findHelpers() {
-        return userRepository.findByRole(User.HELPER_ROLE);
+        List<User> helpersRole = new ArrayList<>(userRepository.findByRole(User.HELPER_ROLE));
+        List<User> boothRole = userRepository.findByRole(User.BOOTH_ROLE);
+        helpersRole.addAll(boothRole);
+        return helpersRole;
     }
 
     public List<User> findNeeders() {
-        return userRepository.findByRole(User.NEEDY_ROLE);
+        List<User> needersRole = new ArrayList<>(userRepository.findByRole(User.NEEDY_ROLE));
+        List<User> boothRole = userRepository.findByRole(User.BOOTH_ROLE);
+        needersRole.addAll(boothRole);
+        return needersRole;
     }
 
     public User findUser(String username) {
