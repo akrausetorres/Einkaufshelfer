@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
+import de.hsba.bi.einkaufshelfer.address.Address;
+import de.hsba.bi.einkaufshelfer.address.AddressService;
 import de.hsba.bi.einkaufshelfer.rating.Rating;
 import de.hsba.bi.einkaufshelfer.rating.RatingService;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
@@ -25,6 +27,7 @@ public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RatingService ratingService;
+    private final AddressService addressService;
 
     @EventListener(ApplicationStartedEvent.class)
     public void init() {
@@ -36,6 +39,8 @@ public class UserService {
         ratingService.saveRating(new Rating(user1, user1, 4));
         ratingService.saveRating(new Rating(user2, user1, 5));
         ratingService.saveRating(new Rating(user3, user1, 1));
+
+        addressService.saveAddress(new Address(user2, "Musterstraße", "12a", "20099", "Hamburg", "Germany"));
     }
 
     public User createUser(String name, String password, String role) {

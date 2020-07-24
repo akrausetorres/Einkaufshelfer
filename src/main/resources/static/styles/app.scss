@@ -78,6 +78,7 @@ body {
     border-bottom: 1px solid #dedede;
     padding: 20px 0;
     background-color: #fff;
+    z-index: 1;
 
     .hx-search-container {
       position: absolute;
@@ -174,6 +175,13 @@ body {
         text-decoration: none;
         color: #333;
       }
+    }
+  }
+
+  form {
+    h2 {
+      font-size: 20px;
+      margin: 50px 0 20px;
     }
   }
 }

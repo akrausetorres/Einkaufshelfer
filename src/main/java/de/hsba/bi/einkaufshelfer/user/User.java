@@ -1,5 +1,6 @@
 package de.hsba.bi.einkaufshelfer.user;
 
+import de.hsba.bi.einkaufshelfer.address.Address;
 import de.hsba.bi.einkaufshelfer.rating.Rating;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -37,6 +38,9 @@ public class User implements Comparable<User> {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "toUser")
     @OrderBy
     private List<Rating> ratings;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
+    private Address address;
 
     private String role;
 

@@ -23,14 +23,14 @@
 
         <!-- TODOS: -->
         <div>
-            <strong>Add the Address Fields</strong>
+            <strong>Add the Stadtteile Selection for Helpers</strong>
         </div>
 
         <h2 class="hx-section-title">Nutzerdaten bearbeiten</h2>
         <div class="hx-alert-container success" th:if="${editUserSuccess != null}">
             <strong th:text="${editUserSuccess}"></strong>
         </div>
-        <form method="post" th:action="@{/account/edit}" th:object="${editUserForm}">
+        <form method="post" th:action="@{/account/settings/user}" th:object="${editUserForm}">
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label" for="inputUsername">Hilfe anbieten oder Hilfe benötigen?</label>
                 <div class="col-sm-10">
@@ -49,9 +49,62 @@
                     <label class="text-danger small" th:errors="*{username}"/>
                 </div>
             </div>
+
             <div class="form-group row">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button class="btn btn-primary" type="submit">Änderungen speichern</button>
+                </div>
+            </div>
+        </form>
+
+        <h2 th:if="${loggedInUser.getRole().equals('NEEDY') || loggedInUser.getRole().equals('BOOTH')}" class="hx-section-title">Adresse bearbeiten</h2>
+        <div class="hx-alert-container success" th:if="${editAddressSuccess != null}">
+            <strong th:text="${editAddressSuccess}"></strong>
+        </div>
+        <form th:if="${loggedInUser.getRole().equals('NEEDY') || loggedInUser.getRole().equals('BOOTH')}" method="post" th:action="@{/account/settings/address}" th:object="${editAddressForm}">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputStreet">Straße</label>
+                <div class="col-sm-10">
+                    <input th:field="*{street}" class="form-control" id="inputStreet" name="street" type="text" />
+                    <label class="text-danger small" th:errors="*{street}"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputStreetNr">Straßennummer</label>
+                <div class="col-sm-10">
+                    <input th:field="*{streetNr}" class="form-control" id="inputStreetNr" name="streetNr" type="text" />
+                    <label class="text-danger small" th:errors="*{streetNr}"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputUsername">Postleitzahl</label>
+                <div class="col-sm-10">
+                    <input th:field="*{postalcode}" class="form-control" id="inputPostalcode" name="postalcode" type="text" />
+                    <label class="text-danger small" th:errors="*{postalcode}"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputUsername">Stadt</label>
+                <div class="col-sm-10">
+                    <input th:field="*{city}" class="form-control" id="inputCity" name="city" type="text" />
+                    <label class="text-danger small" th:errors="*{city}"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label" for="inputUsername">Land</label>
+                <div class="col-sm-10">
+                    <input th:field="*{country}" class="form-control" id="inputCountry" name="country" type="text" />
+                    <label class="text-danger small" th:errors="*{country}"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-primary" type="submit">Adresse speichern</button>
                 </div>
             </div>
         </form>
@@ -63,7 +116,7 @@
         <div class="hx-alert-container success" th:if="${passwordChangeSuccess != null}">
             <strong th:text="${passwordChangeSuccess}"></strong>
         </div>
-        <form method="post" th:action="@{/account/passwort-change}" th:object="${passwordChangeForm}">
+        <form method="post" th:action="@{/account/settings/password-change}" th:object="${passwordChangeForm}">
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label" for="inputOldPassword">Aktuelles Passwort</label>
                 <div class="col-sm-10">

@@ -62,6 +62,7 @@ body .hx-header-container {
   border-bottom: 1px solid #dedede;
   padding: 20px 0;
   background-color: #fff;
+  z-index: 1;
 }
 body .hx-header-container .hx-search-container {
   position: absolute;
@@ -138,6 +139,10 @@ body .hx-users-grid-container .bx-user-item .bx-username {
   font-size: 14px;
   text-decoration: none;
   color: #333;
+}
+body form h2 {
+  font-size: 20px;
+  margin: 50px 0 20px;
 }
 
 /*# sourceMappingURL=app.css.map */

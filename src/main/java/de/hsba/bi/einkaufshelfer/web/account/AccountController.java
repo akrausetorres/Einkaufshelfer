@@ -1,5 +1,7 @@
 package de.hsba.bi.einkaufshelfer.web.account;
 
+import de.hsba.bi.einkaufshelfer.address.Address;
+import de.hsba.bi.einkaufshelfer.address.AddressService;
 import de.hsba.bi.einkaufshelfer.user.User;
 import de.hsba.bi.einkaufshelfer.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -11,12 +13,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/account")
 @RequiredArgsConstructor
 public class AccountController {
-
-    private final UserService userService;
 
     @GetMapping("login")
     public String login(Model model) {
@@ -38,25 +40,5 @@ public class AccountController {
         model.addAttribute("pageDescription", "Erstelle ein neues Konto");
         model.addAttribute("registerForm", new RegisterForm());
         return "account/register";
-    }
-
-    @GetMapping("settings")
-    public String settings(Model model) {
-        model.addAttribute("pageTitle", "Mein Konto");
-        model.addAttribute("pageDescription", "Verwalte dein Konto");
-
-        User user = userService.findCurrentUser();
-
-        if (user == null) {
-            return "redirect:/login";
-        }
-
-        EditUserForm form = new EditUserForm();
-        form.setRole(user.getRole());
-        form.setUsername(user.getName());
-
-        model.addAttribute("editUserForm", form);
-
-        return "account/settings";
     }
 }
