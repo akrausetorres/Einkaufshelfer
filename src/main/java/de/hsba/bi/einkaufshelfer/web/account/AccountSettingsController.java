@@ -20,7 +20,6 @@ import javax.validation.Valid;
 public class AccountSettingsController {
 
     private final UserService userService;
-    private final AddressService addressService;
     private final PasswordEncoder passwordEncoder;
 
     @GetMapping

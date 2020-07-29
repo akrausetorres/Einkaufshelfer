@@ -8,7 +8,9 @@
 
         <!-- TODO: Show Search only for Helpers? -->
         <div class="hx-search-container">
-            <input placeholder="Suche..." class="form-control" id="inputUsername" name="username" type="text" />
+            <form method="get" th:action="@{/search}">
+                <input placeholder="Suche nach Stadtteile, Postleitzahlen, Nutzern..." class="form-control" name="search" type="text" />
+            </form>
         </div>
 
         <ul>

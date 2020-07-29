@@ -79,6 +79,10 @@ public class UserService {
         return userRepository.findByName(User.getCurrentUsername());
     }
 
+    public List<User> searchForUsername(String username) {
+        return username.isBlank() ? userRepository.findAll() : userRepository.findByNameContains(username);
+    }
+
     public Rating submitRating(Integer stars, User toUser) {
         User currentUser = findCurrentUser();
         return ratingService.saveRating( new Rating(currentUser, toUser, stars) );

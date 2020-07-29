@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layout}"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Dein Einkaufshelfer - Suche</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link th:href="@{/styles/app.css}" rel="stylesheet" />
+</head>
+<body>
+
+<div th:replace="fragments/header :: .hx-header-container"></div>
+
+<div class="hx-content-container hx-inner">
+    <div th:replace="fragments/title :: hxtitle(${pageTitle}, ${pageDescription}) "></div>
+
+    <div class="hx-container" layout:fragment="content">
+
+        <h2 class="hx-section-title">Unsere Hilfsanfragen</h2>
+        <!-- TODOS: -->
+        <strong>Show List of Help Requests...</strong> <br />
+
+
+        <h2 class="hx-section-title">Unsere Nutzer</h2>
+        <div th:replace="fragments/user-list :: hxuserlist(${foundUsers}) "></div>
+
+    </div>
+</div>
+</body>
+</html>
