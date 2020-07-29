@@ -48,8 +48,8 @@ public class User implements Comparable<User> {
         this.name = name;
         this.password = password;
 
-        //make sure role is not manipulated, in case we give BOOTH
-        this.role = role == HELPER_ROLE ? HELPER_ROLE : role == NEEDY_ROLE ? NEEDY_ROLE : role == BOOTH_ROLE ? BOOTH_ROLE : BOOTH_ROLE;
+        //make sure role is not manipulated, in case it is we give BOOTH
+        this.role = role.equals(HELPER_ROLE) ? HELPER_ROLE : role.equals(NEEDY_ROLE) ? NEEDY_ROLE : role.equals(BOOTH_ROLE) ? BOOTH_ROLE : BOOTH_ROLE;
     }
 
     public String getTranslatedRole() {

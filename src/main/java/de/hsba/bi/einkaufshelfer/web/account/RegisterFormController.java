@@ -34,6 +34,13 @@ public class RegisterFormController {
         String passwordConfirm = form.getPasswordConfirm();
         String role = form.getRole();
 
+        //Address
+        String street = form.getStreet();
+        String streetNr = form.getStreetNr();
+        String postalcode = form.getPostalcode();
+        String city = form.getCity();
+        String country = form.getCountry();
+
         User usercheck = userService.findUser(username);
 
         if (usercheck != null) {
@@ -46,7 +53,8 @@ public class RegisterFormController {
             return "account/register";
         }
 
-        userService.createUser(username, password, role);
+        userService.createUser(username, password, role, street, streetNr, postalcode, city, country);
+
         return "redirect:/account/login";
     }
 }

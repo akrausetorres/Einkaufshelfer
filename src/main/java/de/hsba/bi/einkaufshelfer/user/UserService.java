@@ -34,19 +34,19 @@ public class UserService {
     @EventListener(ApplicationStartedEvent.class)
     public void init() {
         //Create Demo Data
-        User user1 = createUser("helper", "Start123", User.HELPER_ROLE);
-        User user2 = createUser("needy", "Pwd123", User.NEEDY_ROLE);
-        User user3 = createUser("john", "Pwd123", User.BOOTH_ROLE);
+        User user1 = createUser("helper", "Start123", User.HELPER_ROLE, "Musterstraße", "12a", "20099", "Hamburg", "Deutschland");
+        User user2 = createUser("needy", "Pwd123", User.NEEDY_ROLE, "Musterstraße", "11a", "20099", "Hamburg", "Deutschland");
+        User user3 = createUser("john", "Pwd123", User.BOOTH_ROLE, "Musterstraße", "10a", "20099", "Hamburg", "Deutschland");
 
         ratingService.saveRating(new Rating(user1, user1, 4));
         ratingService.saveRating(new Rating(user2, user1, 5));
         ratingService.saveRating(new Rating(user3, user1, 1));
-
-        addressService.saveAddress(new Address(user2, "Musterstraße", "12a", "20099", "Hamburg", "Germany"));
     }
 
-    public User createUser(String name, String password, String role) {
-        return userRepository.save(new User(name.toLowerCase(), passwordEncoder.encode(password), role));
+    public User createUser(String name, String password, String role, String street, String streetNr, String postalcode, String city, String country) {
+        User newUser = userRepository.save(new User(name.toLowerCase(), passwordEncoder.encode(password), role));
+        newUser.setAddress(new Address(newUser, street, streetNr, postalcode, city, country));
+        return newUser;
     }
 
     public User saveUser(User user) {
