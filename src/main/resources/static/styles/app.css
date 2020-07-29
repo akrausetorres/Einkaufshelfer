@@ -69,7 +69,7 @@ body .hx-header-container .hx-search-container {
   left: 50%;
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
-  width: 350px;
+  width: 400px;
 }
 body .hx-header-container .hx-search-container input {
   width: 100%;

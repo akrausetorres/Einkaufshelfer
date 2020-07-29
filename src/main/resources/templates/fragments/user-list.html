@@ -7,6 +7,8 @@
         <div class="bx-inital"><span th:text="${user.name.charAt(0)}"></span></div>
         <div th:text="${user.name}" class="bx-username"></div>
     </a>
+
+    <p th:if="${users.isEmpty()}">Es wurden leider keine Nutzer gefunden</p>
 </div>
 
 </body>
