@@ -22,6 +22,21 @@ public class RegisterForm {
     @NotEmpty(message = "Bitte eine Rolle eingeben")
     private String role;
 
+    @NotEmpty(message = "Bitte eine Straße eingeben")
+    private String street;
+
+    @NotEmpty(message = "Bitte eine Hausnummer eingeben")
+    private String streetNr;
+
+    @NotEmpty(message = "Bitte eine Postleitzahl eingeben")
+    private String postalcode;
+
+    @NotEmpty(message = "Bitte eine Stadt eingeben")
+    private String city;
+
+    @NotEmpty(message = "Bitte ein Land eingeben")
+    private String country;
+
     @NotEmpty(message = "Bitte Passwort eingeben")
     private String password;
 

@@ -57,11 +57,11 @@
             </div>
         </form>
 
-        <h2 th:if="${loggedInUser.getRole().equals('NEEDY') || loggedInUser.getRole().equals('BOOTH')}" class="hx-section-title">Adresse bearbeiten</h2>
+        <h2 class="hx-section-title">Adresse bearbeiten</h2>
         <div class="hx-alert-container success" th:if="${editAddressSuccess != null}">
             <strong th:text="${editAddressSuccess}"></strong>
         </div>
-        <form th:if="${loggedInUser.getRole().equals('NEEDY') || loggedInUser.getRole().equals('BOOTH')}" method="post" th:action="@{/account/settings/address}" th:object="${editAddressForm}">
+        <form method="post" th:action="@{/account/settings/address}" th:object="${editAddressForm}">
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label" for="inputStreet">Straße</label>
                 <div class="col-sm-10">
