@@ -21,7 +21,7 @@ public class SearchController {
 
     @GetMapping
     public String search(Model model, @RequestParam(value = "search", required = false, defaultValue = "") String search) {
-        model.addAttribute("pageTitle", "Suche: ");
+        model.addAttribute("pageTitle", "Suche: " + search);
         model.addAttribute("pageDescription", "Diese Seite enthält Ergebnisse deiner Suche");
 
         //TODO: Search for HelpRequest with Cities
